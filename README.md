@@ -50,7 +50,7 @@ g++ -std=c++11 -o out fs_read_impl.cc fs_write_impl.cc fs_service.cc && ./out
 cd [directory_name] 
 - Change the current working directory. The working directory begins at '/'. You may
   traverse to a child directory or the parent.
-- If the working directory is already at root, changing directory to parent is no op.
+- If the working directory is already at root, changing directory to parent is a no op.
 - Return error if directory doesn't exist or given input is a file.
 
 pwd
@@ -70,11 +70,12 @@ mkdir [directory_name]
 ls [directory_name]
 - Get the directory contents: Returns the children of the current working directory.
 - Return error for invalid or non-existing paths.
-- If directory name is not specified, list all contents of the working directory.
+- If directory_name is not specified, list all contents of the working directory.
 - Implemented with Extension:
   - List directory contents with both relative paths and absolute paths:
     - If path param starts with "/", traversal starts from root
     - Otherwise, traversal starts from the working directory
+    - List returned is in sorted order
 
 rm [file/dir_name]
 - Remove a directory/file. The target must be among the current working directory’s
@@ -111,6 +112,6 @@ mv [source_file_name] [dest_file_name]
 find [file/dir_name]
 - Find a file/directory: Given a filename, find all the files and directories within the current
     working directory that have exactly that name.
-- Return the list in sorted order (empty if nothing is found).
+- Return a list of absolute paths in sorted order (empty if nothing is found).
  
 Return "command not found" to not supported commands.

@@ -38,7 +38,7 @@ class FileSystem {
     void cd(string path);
     string pwd();
     vector<string> ls(string path);
-    vector<string> find(string path);
+    vector<string> find(string filename);
     string cat(string path);
 
     // Write functions: implementation of those functions adds/deletes trie nodes

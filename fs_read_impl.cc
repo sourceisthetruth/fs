@@ -1,12 +1,11 @@
 #include "fs_impl.h"
-#include "fs_impl.h"
 
 using namespace std;
 
 /* Implementation of functions in this file traverses the trie data structure without modifying it */
 
 // Change the current working directory to a child directory or the parent.
-// If the working directory is already at root, changing directory to parent does nothing.
+// If the working directory is already at root, changing directory to parent is a no op.
 // Return Error if directory doesn't exist or given input is a file.
 // TODO(mianl): Implement with absolute vs relative path extension
 void FileSystem::cd(string path) {
@@ -77,16 +76,16 @@ vector<string> FileSystem::ls(string path) {
 
 // Find a file/directory: Given a filename, find all the files and directories within the current
 // working directory that have exactly that name.
-// Implemented with BFS and returns the list in sorted order (empty if nothing is found).
-vector<string> FileSystem::find(string path) {
+// Implemented with BFS and return a list of absolute paths in sorted order (empty if nothing is found).
+vector<string> FileSystem::find(string filename) {
     vector<string> files;
     queue<File*> q;
     q.push(currDir);
     while (!q.empty()) {
         File* traverse = q.front();
         q.pop();
-        if (traverse->children.find(path) != traverse->children.end()) {
-            files.push_back(traverse->children[path]->name);
+        if (traverse->children.find(filename) != traverse->children.end()) {
+            files.push_back(traverse->children[filename]->name);
         }
         for (auto iter = traverse->children.begin(); iter != traverse->children.end(); iter++) {
             q.push(iter->second);
@@ -103,7 +102,6 @@ vector<string> FileSystem::find(string path) {
 string FileSystem::cat(string path) {
     File* traverse = currDir;
     int i = 0;
-    // traverse to the directory if the directory is not the current directory
     vector<string> subdirs = split(path, '/');
     if (subdirs[0] == "") {
         traverse = root;
