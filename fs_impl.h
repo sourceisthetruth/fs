@@ -1,0 +1,54 @@
+#ifndef FS_IMPL_H
+#define FS_IMPL_H
+
+#include <iostream>
+#include <map>
+#include <queue>
+#include <sstream>
+#include <stack>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+/* trie implementation of an in memory linux style file system
+*/
+class FileSystem {
+    struct File {
+        map<string, File*> children;
+        File* parent;
+        bool isDir;
+        // The complete path from the root
+        string name;
+        // If the node is a file, it holds the file content.
+        string content;
+    };
+
+    File* root;
+    File* currDir;
+  public:
+    FileSystem() {
+        root = new File();
+        root->isDir = true;
+        // The working directory begins at '/'.
+        root->name = "/";
+        currDir = root;
+    }
+    // Read functions: implementation of those functions does not modify the trie nodes
+    void cd(string path);
+    string pwd();
+    vector<string> ls(string path);
+    vector<string> find(string path);
+    string cat(string path);
+
+    // Write functions: implementation of those functions adds/deletes trie nodes
+    void mkdir(string path);
+    void rm(string path);
+    void touch(string path);
+    void write(string path, string content);
+    void mv(string from, string to);
+
+    // Util functions
+    vector<string> split(string s, char delim);
+};
+#endif
