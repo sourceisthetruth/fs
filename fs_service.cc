@@ -1,4 +1,3 @@
-#include<iostream>
 #include "fs_impl.h"
 
 using namespace std;
@@ -11,7 +10,7 @@ int main() {
 
     while(1) {
         string input;
-        while(std::getline(std::cin, input)) {
+        while(getline(std::cin, input)) {
             vector<string> commands = fs.split(input, ' ');
             if (commands.size() == 0) continue;
             string command = commands[0];

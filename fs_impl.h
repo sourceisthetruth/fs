@@ -18,9 +18,9 @@ class FileSystem {
         map<string, File*> children;
         File* parent;
         bool isDir;
-        // The complete path from the root
+        // The absolute path from root
         string name;
-        // If the node is a file, it holds the file content.
+        // If the node is a file, this field holds the file content.
         string content;
     };
 

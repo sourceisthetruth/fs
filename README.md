@@ -9,16 +9,16 @@ as the keys of the children map in each parent node.
 ### Open Source Libraries
 
 - We use googletest http://google.github.io/googletest/primer.html
-  for our C++ unit tests.
+  for unit tests.
   Download here
     ```
     https://github.com/google/googletest/releases/tag/release-1.12.1
     ```
 - Install cmake https://google.github.io/googletest/quickstart-cmake.html
     ```
-  brew install cmake #
+  brew install cmake
     ```
-    For non-mac systems, use other installer such as "apt-get install".
+  For non-mac systems, use other installer such as "apt-get install".
 
 ## Unit Test
 

@@ -2,11 +2,11 @@
 
 #include "gtest/gtest.h"
 
-// Test fs_impl classes.
+/* Test fs_impl classes */
 namespace {
 
-// Tests creating directory with absolute Path.
-// The read functions cd(string) and pwd() are tested here too.
+// Tests creating directory with absolute paths
+// The read functions cd(string) and pwd() are tested here too
 TEST(FileSystem, TestMkdirAbsolutePath) {
     FileSystem fs;
     fs.mkdir("/a/b/c");
@@ -29,7 +29,7 @@ TEST(FileSystem, TestMkdirAbsolutePath) {
     EXPECT_EQ("/a/b/", fs.pwd());
 }
 
-// Tests creating directory from the working directory, including parent "..".
+// Tests creating directory from the working directory, including parent ".."
 // The read functions cd(string) and pwd are tested here too
 TEST(FileSystem, TestMkdirRelativePath) {
     FileSystem fs;
@@ -67,7 +67,7 @@ TEST(FileSystem, TestMkdirRelativePath) {
 }
 
 // Tests mkdir should fail with invalid path
-// rm and cd should fail because it doesn't exist
+// rm and cd should fail because dir doesn't exist
 TEST(FileSystem, TestMkdirInvalidPath) {
     FileSystem fs;
 
@@ -105,7 +105,7 @@ TEST(FileSystem, TestMkdirInvalidPath) {
     }
 }
 
-// Tests touch, write (with absolute path), and remove
+// Tests touch, write (with absolute paths), and remove
 TEST(FileSystem, TestTouchWriteRm) {
     FileSystem fs;
     fs.mkdir("/a/b/c");
@@ -131,7 +131,7 @@ TEST(FileSystem, TestTouchWriteRm) {
     EXPECT_EQ("/a/", fs.pwd());
 }
 
-// Tests touch, write (with relative path), and move
+// Tests touch, write (with relative paths), and move
 TEST(FileSystem, TestTouchWriteMv) {
     FileSystem fs;
     fs.mkdir("/a/b/c");
@@ -163,7 +163,7 @@ TEST(FileSystem, TestTouchWriteMv) {
 
 // Tests invalid scenarios should fail write
 // mv should fail too if file doesn't exist
-TEST(FileSystem, TestInvalidWrite) {
+TEST(FileSystem, TestWriteInvalid) {
     FileSystem fs;
     fs.mkdir("/a/b/c");
     fs.cd("a");
@@ -202,7 +202,7 @@ TEST(FileSystem, TestInvalidWrite) {
 }
 
 // Tests mkdir and touch should fail if file/directory already exists.
-TEST(FileSystem, TestFileOrDirExists) {
+TEST(FileSystem, TestCreateInvalid) {
     FileSystem fs;
     fs.mkdir("/a/b/c");
     try {
@@ -387,7 +387,6 @@ TEST(FileSystem, TestCatInvalid) {
         EXPECT_EQ(err.what(), string("Not a file: ../mydir"));
     }
 }
-
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc,argv);
