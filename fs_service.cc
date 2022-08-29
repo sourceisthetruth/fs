@@ -78,7 +78,7 @@ int main() {
                 if (commands.size() > 2) {
                     cout << "SYNOPSIS: " << endl;
                     cout << "   ls: list current working directory contents " << endl;
-                    cout << "   ls [directory_name]: list contents for directory " << endl;
+                    cout << "   ls [file/dir_name]: list for specified param " << endl;
                     continue;
                 }
                 if (commands.size() == 2) param = commands[1];

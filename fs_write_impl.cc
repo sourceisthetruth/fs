@@ -60,7 +60,7 @@ void FileSystem::rm(string path) {
 }
 
 // Create a new file: Creates a new empty file in the current working directory.
-// Return Error if a file or a directory with the same name already exists.
+// Return Error if a file or directory with the same name already exists.
 // TODO(mianl): Implement with absolute vs relative path extension
 void FileSystem::touch(string path) {
     if (currDir->children.find(path) != currDir->children.end())
@@ -73,7 +73,7 @@ void FileSystem::touch(string path) {
     currDir->children[path] = newFile;
 }
 
-// Write file contents: Writes the specified contents to a file in the current working
+// Write file contents: Appends the specified content to a file in the current working
 // directory. Return Error if the file doesn't already exist.
 // Extension:
 // 1. if path param starts with "/", traversal starts from root

@@ -34,7 +34,8 @@ string FileSystem::pwd() {
 // List directory contents with both relative paths and absolute paths:
 // 1. if path param starts with "/", traversal starts from root
 // 2. if path param doesn't start with "/", traversal starts from the working directory
-// 3. trie traversal has a runtime complexity of O(n+m) for n subdirs and m files
+// 3. if path points to a file, list the filename
+// 4. trie traversal has a runtime complexity of O(n+m) for n subdirs and m files
 vector<string> FileSystem::ls(string path) {
     vector<string> files;
     File* traverse = currDir;

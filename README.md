@@ -67,7 +67,7 @@ mkdir [directory_name]
     - Otherwise, traversal starts from the working directory
     - Automatically create any intermediate directories on the path that don’t exist yet.
 
-ls [directory_name]
+ls [file/dir_name]
 - Get the directory contents: Returns the children of the current working directory.
 - Return error for invalid or non-existing paths.
 - If directory_name is not specified, list all contents of the working directory.
@@ -75,25 +75,26 @@ ls [directory_name]
   - List directory contents with both relative paths and absolute paths:
     - If path param starts with "/", traversal starts from root
     - Otherwise, traversal starts from the working directory
+    - If path points to a file, list the filename
     - List returned is in sorted order
 
 rm [file/dir_name]
-- Remove a directory/file. The target must be among the current working directory’s
+- Remove a file/directory. The target must be among the current working directory’s
   children.
 - If the target directory is a parent, all subdirs of the target directory will be removed too.
-- Return error for non-existing directories/files.
+- Return error for non-existing files/directories.
 
 touch [file_name]
 - Create a new file: Creates a new empty file in the current working directory.
-- Return error if a file or a directory with the same name already exists.
+- Return error if a file or directory with the same name already exists.
 
 write [file_name] [file_content]
-- Write file contents: Writes the specified contents to a file in the current working
+- Write file contents: Appends the specified content to a file in the current working
   directory. Files have to be created previously.
 - Return error if file doesn't exist or path points to a directory.
 - Implemented with Extension:
   - If path param starts with "/", traversal starts from root
-  - Otherwise, traversal starts from the current directory
+  - Otherwise, traversal starts from the working directory
 
 cat [file_name]
 - Get file contents: Returns the content of a file in the current working directory.
@@ -106,8 +107,8 @@ mv [source_file_name] [dest_file_name]
 - Move a file: Move an existing file in the current working directory to a new location (in
   the same directory).
 - Override the dest file if it already exists.
-- Return error if file doesn't exist or path points to a directory.
-- No op if source path is the same as destination. 
+- Return error if source file doesn't exist or points to a directory.
+- No op if source is the same as destination. 
 
 find [file/dir_name]
 - Find a file/directory: Given a filename, find all the files and directories within the current
