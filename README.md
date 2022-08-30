@@ -1,8 +1,8 @@
 # In-Memory File System
 
 The c++ implementation of an In-Memory FS for a single user.
-The FS is represented with a trie data structure, where each directory or file is a node.
-The root directory is the root node of the trie, and all other nodes can have one parent, and 0 to multiple children.
+The FS is represented with a tree data structure, where each directory or file is a node.
+The root directory is the root node, and all other nodes can have one parent, and 0 to multiple children.
 The absolute path from root is stored in each node, while the relative file names from the parent directory are used
 as the keys of the children map in each parent node. 
 

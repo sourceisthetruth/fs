@@ -34,14 +34,14 @@ class FileSystem {
         root->name = "/";
         currDir = root;
     }
-    // Read functions: implementation of those functions does not modify the trie nodes
+    // Read functions: implementation of those functions does not mutate nodes
     void cd(string path);
     string pwd();
     vector<string> ls(string path);
     vector<string> find(string filename);
     string cat(string path);
 
-    // Write functions: implementation of those functions adds/deletes trie nodes
+    // Write functions: implementation of those functions mutates nodes
     void mkdir(string path);
     void rm(string path);
     void touch(string path);

@@ -2,7 +2,7 @@
 
 using namespace std;
 
-/* Implementation of functions in this file traverses the trie data structure without modifying it */
+/* Implementation of functions in this file does not mutate nodes during traversal */
 
 // Change the current working directory to a child directory or the parent.
 // If the working directory is already at root, changing directory to parent is a no op.
