@@ -11,7 +11,7 @@
 
 using namespace std;
 
-/* trie implementation of an in memory linux style file system
+/* Implementation of an in memory linux style file system
 */
 class FileSystem {
     struct File {

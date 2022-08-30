@@ -2,7 +2,7 @@
 
 using namespace std;
 
-/* Implementation of functions in this file adds/deletes nodes of the trie data structure */
+/* Implementation of functions in this file adds/deletes nodes (mutate) */
 
 // Create a new directory. The current working directory is the parent.
 // Return Error if a file or directory with the same name exists under the parent.
@@ -11,7 +11,7 @@ using namespace std;
 // 1. if path param starts with "/", traversal starts from root
 // 2. if path param doesn't start with "/", traversal starts from the working directory
 // 3. automatically create any intermediate directories on the path that don’t exist yet.
-// 4. trie traversal has a runtime complexity of O(n) for n subdirs
+// 4. O(n) for n subdirs
 void FileSystem::mkdir(string path) {
     bool created = false;
     File* traverse = currDir;
@@ -32,6 +32,7 @@ void FileSystem::mkdir(string path) {
             }
         }
         if (traverse->children.find(subdir) != traverse->children.end()) {
+            if (!traverse->children[subdir]->isDir) throw invalid_argument("Invalid path: " + path);
             traverse = traverse->children[subdir];
             continue;
         }
@@ -78,7 +79,7 @@ void FileSystem::touch(string path) {
 // Extension:
 // 1. if path param starts with "/", traversal starts from root
 // 2. if path param doesn't start with "/", traversal starts from the working directory
-// 3. trie traversal has a runtime complexity of O(n) for n subdirs
+// 3. O(n) for n subdirs
 void FileSystem::write(string path, string content) {
     File* traverse = currDir;
     int i = 0;

@@ -228,7 +228,7 @@ TEST(FileSystem, TestCreateInvalid) {
         FAIL() << "Expected exception because file exists";
     }
     catch(invalid_argument const & err) {
-        EXPECT_EQ(err.what(), string("File/Directory exists: /a/dup"));
+        EXPECT_EQ(err.what(), string("Invalid path: /a/dup"));
     }
 }
 

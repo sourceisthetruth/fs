@@ -3,7 +3,7 @@
 using namespace std;
 
 /* User prompt for using the in memory file system
-   TODO(mianl): Make fs impl thread-safe, and spawn a new thread for each user prompt.
+   TODO(mianl): each user have their own FS.
 */
 int main() {
     FileSystem fs;
